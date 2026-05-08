@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root { 
+    --frame: #8b4e2e; 
+    --gold: #f4b41b; 
+    --wood: #e1b382;
+    --bg-dark: #1a0f0d;
+}
+
+body { margin: 0; background: var(--bg-dark); display: flex; justify-content: center; align-items: center; height: 100vh; font-family: 'VT323', monospace; overflow: hidden; }
+#game-container { position: relative; border: 8px solid var(--frame); box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+canvas { display: block; image-rendering: pixelated; }
+.hidden { display: none !important; }
+
+.overlay {
+    position: absolute; inset: 0; background: #5ca944;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 200; color: white; text-shadow: 3px 3px 0 #3d251e;
+}
+.overlay h1 { font-size: 80px; margin: 0; color: var(--gold); }
+.overlay h3 { font-size: 30px; margin-top: -10px; opacity: 0.9; }
+
+.control-list { list-style: none; padding: 0; max-width: 80%; }
+.control-list li { font-size: 26px; margin-bottom: 12px; line-height: 1.2; }
+.control-list span { color: var(--gold); font-weight: bold; background: rgba(0,0,0,0.2); padding: 0 5px; border-radius: 4px; }
+
+.overlay button {
+    background: var(--frame); border: 4px solid #3d251e; color: white;
+    padding: 15px 40px; font-size: 28px; font-family: 'VT323'; cursor: pointer; margin: 10px;
+}
+.overlay button:hover { background: #e7a05f; }
+.back-btn { position: absolute; top: 20px; left: 20px; padding: 10px !important; font-size: 20px !important; }
+
+#objectives-panel {
+    position: absolute; top: 80px; right: 20px; background: rgba(255, 255, 255, 0.9);
+    border: 3px solid var(--frame); padding: 10px; width: 220px; z-index: 5;
+}
+.obj-item { font-size: 18px; margin-bottom: 5px; color: #333; text-shadow: none; }
+.obj-done { text-decoration: line-through; color: #78ab46; font-weight: bold; }
+
+.status-box { position: absolute; top: 20px; right: 20px; background: var(--gold); border: 4px solid var(--frame); padding: 5px 15px; font-size: 28px; color: #3d251e; }
+#interaction-prompt { position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%); background: white; border: 3px solid var(--frame); padding: 5px 15px; font-size: 24px; }
+.hotbar { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; background: rgba(0,0,0,0.6); padding: 8px; border: 4px solid var(--frame); }
+
+#inventory-tab { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--wood); border: 6px solid var(--frame); padding: 15px; z-index: 100; user-select: none; }
+#inventory-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; }
+
+.slot { width: 50px; height: 50px; background: var(--gold); border: 3px solid var(--frame); display: flex; justify-content: center; align-items: center; font-size: 24px; position: relative; cursor: grab; }
+.slot:active { cursor: grabbing; }
+.slot.selected { border-color: white; outline: 2px solid var(--frame); }
+.slot small { position: absolute; bottom: 2px; right: 2px; font-size: 14px; background: rgba(0,0,0,0.5); color: white; padding: 0 2px; pointer-events: none; }
+
+#shop-screen { position: absolute; inset: 0; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 110; }
+.shop-container { background: #c6c6c6; border: 6px solid var(--frame); padding: 25px; width: 450px; }
+.shop-tabs { display: flex; gap: 10px; margin-bottom: 15px; }
+.shop-tabs button { flex: 1; padding: 10px; font-family: 'VT323'; font-size: 20px; }
+.item-row { display: flex; justify-content: space-between; align-items: center; background: #eee; margin: 5px 0; padding: 10px; border: 1px solid #777; }
+.close-btn { width: 100%; padding: 10px; background: #ff4444; color: white; border: none; font-family: 'VT323'; }
+.dragging { opacity: 0.3; }

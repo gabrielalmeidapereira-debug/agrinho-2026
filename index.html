@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Agro Valley - Agrinho 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="start-screen" class="overlay">
+            <h1>AGRO VALLEY</h1>
+            <h3>Agrinho 2026</h3>
+            <div class="menu-buttons">
+                <button onclick="startGame()">JOGAR</button>
+                <button onclick="showControls()">CONTROLES</button>
+            </div>
+        </div>
+
+        <div id="controls-screen" class="overlay hidden">
+            <button class="back-btn" onclick="showMenu()">← Voltar</button>
+            <h2>Guia do Fazendeiro</h2>
+            <ul class="control-list">
+                <li><span>W, A, S, D</span>: Movimentar o personagem pela fazenda</li>
+                <li><span>Botão Esquerdo Mouse</span>: Arar, Plantar, Regar e Colher</li>
+                <li><span>Teclas 1 a 6 / Setas</span>: Seleção rápida de itens da hotbar</li>
+                <li><span>Tecla E</span>: Interagir com portas, computador e cama</li>
+                <li><span>Tecla I</span>: Abrir ou fechar sua mochila de inventário</li>
+                <li><span>ESC</span>: Fechar janelas de terminal ou inventário</li>
+            </ul>
+        </div>
+
+        <div id="objectives-panel" class="hidden">
+            <h4>Missões Agro</h4>
+            <div id="obj-list"></div>
+        </div>
+
+        <div id="end-screen" class="overlay hidden">
+            <h1 style="font-size: 40px; color: #f4b41b;">VOCÊ CONSEGUIU!</h1>
+            <p>Criou um método forte e sustentável no agronegócio!</p>
+            <button onclick="location.reload()">RECOMEÇAR</button>
+        </div>
+
+        <div id="interaction-prompt" class="hidden"></div>
+        <div id="ui-layer" class="hidden">
+            <div class="status-box">💰 G <span id="moneyText">100</span></div>
+        </div>
+
+        <div id="inventory-tab" class="hidden">
+            <div class="inventory-header">Mochila</div>
+            <div id="inventory-grid"></div>
+        </div>
+
+        <div class="hotbar hidden" id="hotbar"></div>
+
+        <div id="shop-screen" class="hidden">
+            <div class="shop-container">
+                <h2>💻 Terminal de Fazenda</h2>
+                <div class="shop-tabs">
+                    <button onclick="showShopTab('buy')">🛒 Comprar</button>
+                    <button onclick="showShopTab('sell')">💰 Vender</button>
+                </div>
+                <div id="shop-content"></div>
+                <br>
+                <button onclick="toggleShop()" class="close-btn">Sair</button>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="drag-icon" style="position: fixed; pointer-events: none; z-index: 1000; font-size: 30px; display: none;"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
